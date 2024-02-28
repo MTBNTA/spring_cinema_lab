@@ -6,8 +6,8 @@ import jakarta.persistence.*;
 @Table(name = "movies")
 public class Movie {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id // adds it to primary key, unique identifier for each row in database
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // ensures it is an auto incrementing whole number
     private long id;
     @Column(name = "title")
     private String title;
@@ -16,7 +16,7 @@ public class Movie {
     @Column(name = "duration")
     private int duration;
 
-    public Movie(){}
+    public Movie(){}  // needed to make class a pojo class, used for serialising and de-serialising, to create objects
 
     public Movie(String title, String rating, int duration){
         this.title = title;
@@ -24,11 +24,13 @@ public class Movie {
         this.duration = duration;
     }
 
+//    GETTERS & SETTERS - for serialisation
+
     public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
